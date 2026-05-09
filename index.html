@@ -884,13 +884,13 @@
             grid.innerHTML = "";
             paginated.forEach(app => {
                 const hasPin = app.pin ? '<i data-lucide="lock" class="w-3 h-3 text-white"></i>' : '';
-                const pinnedIcon = app.pinned ? '<i data-lucide="pin" class="w-3 h-3 text-yellow-300"></i>' : '';
+                const pinnedIcon = app.pinned ? '<i data-lucide="pin" class="w-3 h-3 text-white"></i>' : '';
                 const downloadBtn = app.download ? `<button onclick="handleActionClick(${app.id}, 'download')" class="bg-blue-500 hover:bg-blue-600 text-white p-2.5 rounded-lg shadow-lg" title="Download"><i data-lucide="download" class="w-4 h-4"></i></button>` : '';
                 const infoBtn = app.extraInfo ? `<button onclick="showExtraInfo(${app.id})" class="bg-orange-500 hover:bg-orange-600 text-white p-2.5 rounded-lg shadow-lg" title="Info"><i data-lucide="info" class="w-4 h-4"></i></button>` : '';
                 grid.innerHTML += `
                 <div class="flip-card-container">
                     <div class="flip-area"><div class="flip-card-inner">
-                        <div class="flip-card-front"><div class="bookmark-label flex items-center gap-1">${hasPin} ${pinnedIcon} <span>${app.category}</span></div><div class="card-content-wrapper"><div class="mb-3"><span class="text-sm font-bold text-green-1000"><i class="fa fa-star-o" style="font-size:15px;color:orange"></i> ${app.title}</span></div><img src="${app.img}" class="card-image-rounded"><div class="py-4"><p class="text-xs text-gray-1000 line-clamp-2"><i class="fa fa-info-circle" style="font-size:15px;color:#3b82f6"></i> ${app.desc}</p></div></div></div>
+                        <div class="flip-card-front"><div class="bookmark-label flex items-center gap-1">${hasPin} ${pinnedIcon} <span>${app.category}</span></div><div class="card-content-wrapper"><div class="mb-3 mt-10"><span class="text-sm font-bold text-green-1000">${app.title}</span></div><img src="${app.img}" class="card-image-rounded"><div class="py-4"><p class="text-xs text-gray-1000 line-clamp-2">${app.desc}</p></div></div></div>
                         <div class="flip-card-back"><div class="bookmark-label flex items-center gap-1 bg-green-700">${hasPin} ${pinnedIcon} <span>${app.category}</span></div><div class="text-center"><i data-lucide="layout" class="w-10 h-10 mx-auto mb-4 text-green-100"></i><h3 class="font-bold mb-2">${app.title}</h3><div class="h-[120px] overflow-y-auto px-2"><p class="text-sm text-gray-100">${app.desc}</p></div></div></div>
                     </div></div>
                     <div class="card-action-area flex items-center gap-2"><button onclick="handleActionClick(${app.id}, 'open')" class="flex-grow bg-green-600 hover:bg-green-700 text-white font-semibold py-2.5 rounded-lg flex items-center justify-center space-x-2 shadow-lg"><i data-lucide="${app.pin ? 'shield-check' : 'external-link'}" class="w-4 h-4"></i><span>Buka</span></button>${downloadBtn}${infoBtn}</div>
