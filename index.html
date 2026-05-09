@@ -835,7 +835,7 @@
             
             pinSection.classList.add('hidden'); pinInput.value = ""; pinInput.classList.remove('border-red-500', 'shake-anim'); errorMsg.classList.add('hidden'); secondaryBtn.classList.add('hidden'); waBtn.classList.add('hidden');
             
-            const themes = { success: { icon: 'check-circle', color: 'bg-green-100 text-green-600', btn: 'bg-green-600 hover:bg-green-700' }, error: { icon: 'x-circle', color: 'bg-red-100 text-red-600', btn: 'bg-red-600 hover:bg-red-700' }, warning: { icon: 'alert-triangle', color: 'bg-orange-100 text-orange-600', btn: 'bg-orange-600 hover:bg-orange-700' }, info: { icon: 'info', color: 'bg-blue-100 text-blue-600', btn: 'bg-blue-600 hover:bg-blue-700' }, security: { icon: 'shield-lock', color: 'bg-green-100 text-green-600', btn: 'bg-green-600 hover:bg-green-700' } };
+            const themes = { success: { icon: 'check-circle', color: 'bg-green-100 text-green-600', btn: 'bg-green-600 hover:bg-green-700' }, error: { icon: 'x-circle', color: 'bg-red-100 text-red-600', btn: 'bg-red-600 hover:bg-red-700' }, warning: { icon: 'alert-triangle', color: 'bg-orange-100 text-orange-600', btn: 'bg-orange-600 hover:bg-orange-700' }, info: { icon: 'info', color: 'bg-blue-100 text-blue-600', btn: 'bg-blue-600 hover:bg-blue-700' }, security: { icon: 'lock', color: 'bg-green-100 text-green-600', btn: 'bg-green-600 hover:bg-green-700' } };
             const theme = themes[config.type || 'info'];
             
             iconCont.className = `w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${theme.color}`;
@@ -1085,7 +1085,7 @@
         // --- Action Handlers ---
         function handleActionClick(id, type) {
             const a = appData.find(x => x.id == id); if(!a) return; const url = type === 'download' ? a.download : a.link;
-            if(a.pin) showModal({ type: 'security', title: 'Masukan PIN', message: 'Masukkan PIN rahasia untuk mengakses aplikasi ini.', primaryText: 'Buka', secondaryText: 'Batal', onConfirm: (p) => { if(p === a.pin) { window.open(url, '_blank'); return true; } return false; } });
+            if(a.pin) showModal({ type: 'security', title: 'Masukan PIN', message: 'Masukkan PIN rahasia untuk mengakses aplikasi ini.', primaryText: 'Buka', secondaryText: 'Batal', onConfirm: (p) => { if(String(p) === String(a.pin)) { window.open(url, '_blank'); return true; } return false; } });
             else window.open(url, '_blank');
         }
         function showExtraInfo(id) { const a = appData.find(x => x.id == id); if(a) { document.getElementById('infoModalTitle').innerText = a.title; document.getElementById('infoModalContent').innerText = a.extraInfo; document.getElementById('infoModal').style.display = 'flex'; } }
